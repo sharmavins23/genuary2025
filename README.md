@@ -1,7 +1,7 @@
 # Genuary 2025
 
 This repository houses my implementations for the various art pieces for
-Genuary 2025. I didn't finish
+[Genuary 2025](https://genuary.art/prompts). I didn't finish
 [2023](https://github.com/sharmavins23/genuary2023), and I haven't even started
 [2024](https://github.com/sharmavins23/genuary2024) as of writing this, but 2025
 is a new year and I am excited to kick it off well!

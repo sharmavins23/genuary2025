@@ -4,7 +4,7 @@ html {
     --transition-time: 0.25s;
 
     --bg-color: #1d2028;
-    --text-color: #fffff2;
+    --text-color: #ffffc2;
     --datetime-color: #ff8827;
 }
 
@@ -556,7 +556,7 @@ a:hover::before {
 .prompts > .card > h3 {
     color: var(--text-color);
     font-family: "Courier New", Courier, monospace;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: right;
 
     margin: 0px;
@@ -604,7 +604,7 @@ a:hover::before {
 
     width: 400px;
     height: 399px;
-    top: 76px;
+    top: 68px;
 
     margin: 0px;
     display: flex;
@@ -623,9 +623,10 @@ a:hover::before {
 }
 
 .prompts > .card > .desc > p {
+    width: 95%;
     color: white;
     font-family: "Roboto", sans-serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: center;
 }
 
