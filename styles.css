@@ -4,7 +4,8 @@ html {
     --transition-time: 0.25s;
 
     --bg-color: #1d2028;
-    --text-color: #ffffc2;
+    --text-color: #fffffc;
+    --text-color-yellow: #ffffc2;
     --datetime-color: #ff8827;
 }
 
@@ -465,7 +466,7 @@ body {
 }
 
 p {
-    color: var(--text-color);
+    color: var(--text-color-yellow);
     width: 60%;
     font-family: "Roboto", sans-serif;
     font-size: 1.25rem;
@@ -537,7 +538,7 @@ a:hover::before {
 }
 
 .prompts > .card > h2 {
-    color: var(--text-color);
+    color: var(--text-color-yellow);
     font-family: "Courier New", Courier, monospace;
     font-size: 1rem;
     text-align: center;
@@ -554,7 +555,7 @@ a:hover::before {
 }
 
 .prompts > .card > h3 {
-    color: var(--text-color);
+    color: var(--text-color-yellow);
     font-family: "Courier New", Courier, monospace;
     font-size: 1.5rem;
     text-align: right;
