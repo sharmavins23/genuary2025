@@ -1,5 +1,7 @@
 # Genuary 2025
 
+[Check out my art pieces!](https://sharmavins23.github.io/genuary2025/)
+
 This repository houses my implementations for the various art pieces for
 [Genuary 2025](https://genuary.art/prompts). I didn't finish
 [2023](https://github.com/sharmavins23/genuary2023), and I haven't even started
