@@ -1,0 +1,225 @@
+html {
+    --debug-borders: 1px solid none;
+
+    --transition-time: 0.25s;
+
+    --bg-color: #1d2028;
+    --text-color: #fffff2;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--bg-color);
+}
+
+@keyframes stack {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+        text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    }
+    60% {
+        opacity: 0.5;
+        transform: translateX(50%);
+    }
+    80% {
+        transform: none;
+        opacity: 1;
+        text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    100% {
+        text-shadow: none;
+    }
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+        transform: translate(var(--glitch-translate));
+    }
+    2% {
+        text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    4%,
+    100% {
+        text-shadow: none;
+        transform: none;
+    }
+}
+
+@keyframes animate {
+    0%,
+    100% {
+        top: -7px;
+        left: 0;
+        opacity: 1;
+    }
+    20% {
+        top: 0;
+        left: -10px;
+        opacity: 0.7;
+    }
+    40% {
+        top: 7px;
+        left: 0;
+        opacity: 0.2;
+    }
+    60% {
+        top: 0;
+        left: 10px;
+        opacity: 0.3;
+    }
+    80% {
+        top: 0;
+        left: 0;
+        opacity: 0.9;
+    }
+}
+
+/* ===== Header ============================================================= */
+
+/* Glitch effect from https://codepen.io/aldrie/pen/PojGYLo */
+.stack {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    color: var(--text-color);
+    font-family: "Courier New", Courier, monospace;
+    text-transform: uppercase;
+}
+
+.stack span {
+    font-weight: bold;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    font-size: 4rem;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(0.46, 0.29, 0, 1.24) 1 backwards
+            calc(var(--index) * 120ms),
+        glitch 2s ease infinite 2s alternate-reverse;
+}
+
+.stack span:nth-child(odd) {
+    --glitch-translate: 8px;
+}
+.stack span:nth-child(even) {
+    --glitch-translate: -8px;
+}
+
+p {
+    color: var(--text-color);
+    width: 60%;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.25rem;
+
+    text-align: center;
+}
+
+p.divider {
+    font-family: "Courier New", Courier, monospace;
+    color: #00ff00;
+}
+
+a {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    color: #f6d8d5;
+    font-size: 23px;
+
+    /* Remove underline from links */
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.9;
+    text-shadow: 0px -5px #ec2225, 0px 5px #00c2cb, -5px 0px #ec2225,
+        5px 0px #00c2cb;
+}
+
+a::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #e0ffff;
+    z-index: -1;
+}
+
+a:hover::before {
+    animation: animate 12ms ease-in-out infinite;
+    z-index: 1;
+}
+
+/* ===== Cards ============================================================== */
+
+.prompts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    justify-items: center;
+
+    border: var(--debug-borders);
+}
+
+.prompts > .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    border: var(--debug-borders);
+}
+
+.prompts > .card > canvas {
+    width: 400px;
+    height: 400px;
+
+    border: 1px solid white;
+}
+
+.prompts > .card > .desc {
+    /* Want the description to appear above the canvas */
+    overflow: hidden;
+    position: absolute;
+
+    width: 400px;
+    height: 399px;
+    top: 88px;
+
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0%;
+    transition: var(--transition-time);
+}
+
+.prompts > .card > .desc:hover {
+    opacity: 100%;
+    transition: var(--transition-time);
+}
+
+.prompts > .card > .desc > p {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.25rem;
+    text-align: center;
+}
