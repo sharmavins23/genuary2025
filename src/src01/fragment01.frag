@@ -21,7 +21,7 @@ void main() {
 
     for (float i = 0.0; i < 5.0; i += 1.0) {
         // Repeat it over space
-        uv = fract(1.5 * uv) - 0.5;
+        uv = fract(1.5 * uv * tanh(iTime * 0.25)) - 0.5;
 
         // Calculate the distance from the center
         float d = length(uv) * exp(-length(uv0));

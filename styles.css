@@ -7,9 +7,12 @@ html {
     --text-color: #fffffc;
     --text-color-yellow: #ffffc2;
     --datetime-color: #ff8827;
+
+    --canvas-size: 400px;
 }
 
 body {
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -592,13 +595,13 @@ a:hover::before {
 .prompts > .card > .box {
     position: relative;
     border: 1px solid white;
-    width: 400px;
-    height: 400px;
+    width: var(--canvas-size);
+    height: var(--canvas-size);
 }
 
 .prompts > .card > .box > canvas {
-    width: 400px;
-    height: 400px;
+    width: var(--canvas-size);
+    height: var(--canvas-size);
 }
 
 .prompts > .card > .box > .desc {
@@ -606,8 +609,8 @@ a:hover::before {
     overflow: hidden;
     position: absolute;
 
-    width: 398px;
-    height: 398px;
+    width: calc(var(--canvas-size) - 2px);
+    height: calc(var(--canvas-size) - 2px);
     top: 1px;
     left: 1px;
 
